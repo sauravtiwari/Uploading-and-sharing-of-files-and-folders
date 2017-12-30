@@ -66,7 +66,30 @@ $("#files").change(function() {
     }
 });
 
+//var files_obj = new Object();
+var arr = [];
+var len;
+$("#files").change(function()
+{
+   len = this.files.length;
+  console.log(len);
+  for(i=0;i<len;i++)
+  {
+    arr.push({
+      name : this.files[i].name,
+      size : this.files[i].size
+      });
+      console.log(arr[i]);
+      $("#file_names").append(arr[i]);
+  }
+     showfile();
+});
 
+function showfile()
+ {
+   console.log(arr);
+   $("#file_names").append(arr);
+   }
 
 </script>
 
