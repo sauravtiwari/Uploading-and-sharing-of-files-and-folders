@@ -69,26 +69,33 @@ $("#files").change(function() {
 //var files_obj = new Object();
 var arr = [];
 var len;
+var foo;
+var name_of_files;
 $("#files").change(function()
 {
-   len = this.files.length;
+  len = this.files.length;
   console.log(len);
   for(i=0;i<len;i++)
   {
-    arr.push({
+    arr.push(foo = {
       name : this.files[i].name,
       size : this.files[i].size
       });
       console.log(arr[i]);
-      $("#file_names").append(arr[i]);
+      console.log(JSON.stringify(foo));
+      console.log(String(foo['name','size']));
+      name_of_files = String(foo['name']);
+
   }
      showfile();
 });
 
 function showfile()
- {
-   console.log(arr);
-   $("#file_names").append(arr);
+  {
+        for(i=0;i<len;i++)
+         {
+           $("#file_names").append(name_of_files);
+         }
    }
 
 </script>
