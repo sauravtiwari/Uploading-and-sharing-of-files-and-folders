@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title></title>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<div id="mainpage" style="width:1000px;height:1000px">
+<input type="file" id="files" multiple>
+<!--image will be inserted here -->
+<div id="preview"></div>
+
+<p id="file_name"></p>
+<div id="file_names"></div>
+
+</div>
+
+<style>
+    #mainpage img {
+        max-width: 125px;
+        max-height: 125px;
+        margin-bottom:10px;
+        margin-left:100px;
+        margin-top:100px;
+    }
+</style>
+
+<script>
+
+/*
+$("#files").change(function() {
+    // will log a FileList object, view gifs below
+    console.log(this.files);
+});
+
+*/
+
+function renderImage(file) {
+
+  var reader = new FileReader();
+
+  reader.onload = function(event) {
+    the_url = event.target.result
+    $('#preview').append("<img src='" + the_url + "' />");
+
+    $('#file_name').append(file.name);
+    console.log(file.name);
+    console.log(file.size);
+    console.log(file.type);
+
+  }
+
+  reader.readAsDataURL(file);
+}
+
+var i;
+
+$("#files").change(function() {
+    console.log(this.files);
+    console.log(this.files.length);
+    //console.log(this.files.size);
+    // grab the first image in the FileList object and pass it to the function
+    for(i=0;i<this.files.length;i++)
+    {
+    renderImage(this.files[i]);
+    }
+});
+
+
+
+</script>
+
+</body>
+</html>
